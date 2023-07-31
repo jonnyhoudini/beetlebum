@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { postDinosaur } from '../services/services';
 // import L from 'leaflet';
 // import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 // import 'leaflet/dist/leaflet.css';
@@ -30,11 +31,10 @@ const Form = () => {
     const onSubmit = (e) => {
         e.preventDefault();
         const tempFormData = formData;
-        tempFormData.map = position;
         console.log(tempFormData);
-        // postDinosaur(tempFormData).then((data) => {
-        //   addDinosaur(data);
-        // })
+        postDinosaur(tempFormData).then((data) => {
+            console.log('dinosaur added', data);
+        });
 
         // Reset the form input values   
         setFormData({
